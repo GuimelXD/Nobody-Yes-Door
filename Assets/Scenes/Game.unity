@@ -256,5 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fcd18be12d6b6045bf7b11db15cb349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDaSala: {fileID: 4206668799675460163, guid: 1ae924239457d6e48b6e6a0721867231,
-    type: 3}
+  sceneNameList:
+  - {fileID: 2292281204819281822, guid: 2297da57fb785d84f8706c78e3329b01, type: 3}
+  - {fileID: 7323703586226635155, guid: 5f858968b9f58b948a49996285a7fcaf, type: 3}

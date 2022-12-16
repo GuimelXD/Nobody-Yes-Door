@@ -23,7 +23,7 @@ public class StartGameButton : MonoBehaviour
     {
         _startPos = transform.localPosition;
         _joint = GetComponent<ConfigurableJoint>();
-        newPlayerPos.Set(-15, 6, -15);
+        //newPlayerPos.Set(-15, 6, -15);
     }
 
     // Update is called once per frame

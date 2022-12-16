@@ -7,49 +7,21 @@ using UnityEngine.SceneManagement;
 public class LoadMap : MonoBehaviour
 {
     private Vector3 Pos;
-    private int spawn;
-    public GameObject nomeDaSala;
+    public GameObject[] sceneNameList;
+    private int RandomOption;
     private int aux = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int z = 0; z >= -30; z -= 10)
+        for (int z = 0; z >= -40; z -= 10)
         {
-            for (int x = 0; x >= -30; x -= 10)
+            for (int x = 0; x >= -40; x -= 10)
             {
                 Pos.Set(x, 0, z);
-                spawn = Random.Range(0, 6);
-                switch (aux)
-                {
-                    case 1:
-                        SpawnRoom(nomeDaSala, Pos);
-                        break;
-                    case 16:
-                        SpawnRoom(nomeDaSala, Pos);
-                        //FAZER CÓDIGO DO FINAL
-                        break;
-                    default:
-                        switch (spawn)
-                        {
-                            case 0:
-                                SpawnRoom(nomeDaSala, Pos);
-                                break;
-                            case 1:
-                                SpawnRoom(nomeDaSala, Pos);
-                                break;
-                            case 2:
-                                SpawnRoom(nomeDaSala, Pos);
-                                break;
-                            case 3:
-                                SpawnRoom(nomeDaSala, Pos);
-                                break;
-                            case 4:
-                                SpawnRoom(nomeDaSala, Pos);
-                                break;
-                        }
-                        break;
-                }
+                RandomOption = Random.Range(0, sceneNameList.Length);
+                SpawnRoom(sceneNameList[RandomOption], Pos);
+                
                 aux++;
             }
         }
