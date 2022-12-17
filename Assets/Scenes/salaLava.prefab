@@ -333,7 +333,7 @@ PrefabInstance:
     - target: {fileID: 4206668799675460163, guid: 1ae924239457d6e48b6e6a0721867231,
         type: 3}
       propertyPath: m_Name
-      value: sala (1)
+      value: sala
       objectReference: {fileID: 0}
     - target: {fileID: 4613383958823468690, guid: 1ae924239457d6e48b6e6a0721867231,
         type: 3}

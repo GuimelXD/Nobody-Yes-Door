@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow_Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 1875537942972812, guid: 4ca04dc9501451e498e3f029e625ccaf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4063417980050988, guid: 4ca04dc9501451e498e3f029e625ccaf, type: 3}
       propertyPath: m_RootOrder
       value: 2

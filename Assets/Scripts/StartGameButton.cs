@@ -9,13 +9,15 @@ public class StartGameButton : MonoBehaviour
 {
     private float threshold = 0.1f;
     private float deadZone = 0.025f;
-    public GameObject[] sceneNameList;
     private bool _isPressed;
     private Vector3 _startPos;
     private Vector3 Pos;
     private ConfigurableJoint _joint;
     private int RandomOption;
-    private int aux = 1;
+    private int RandomOption2;
+    private int instanceNumber = 1;
+
+    public RoomsPuzzlesManager roomsPuzzlesManager;
 
     public UnityEvent onPressed, onReleased;
 
@@ -24,6 +26,7 @@ public class StartGameButton : MonoBehaviour
     {
         _startPos = transform.localPosition;
         _joint = GetComponent<ConfigurableJoint>();
+        LoadIt();
     }
 
     // Update is called once per frame
@@ -54,10 +57,11 @@ public class StartGameButton : MonoBehaviour
             for (int x = 0; x >= -40; x -= 10)
             {
                 Pos.Set(x, 0, z);
-                RandomOption = UnityEngine.Random.Range(0, sceneNameList.Length);
-                SpawnRoom(sceneNameList[RandomOption], Pos);
-
-                aux++;
+                RandomOption = UnityEngine.Random.Range(0, roomsPuzzlesManager.sceneNameList.Length);
+                RandomOption2 = UnityEngine.Random.Range(0, roomsPuzzlesManager.puzzleNameList.Length);
+                SpawnRoom(roomsPuzzlesManager.sceneNameList[RandomOption]/*sceneNameList[RandomOption]*/, Pos);
+                SpawnPuzzle(roomsPuzzlesManager.puzzleNameList[RandomOption2], Pos);
+                instanceNumber++;
             }
         }
         Destroy(GameObject.Find("Menu"));
@@ -66,7 +70,24 @@ public class StartGameButton : MonoBehaviour
     private void SpawnRoom(GameObject nome, Vector3 Pos)
     {
         GameObject new_sala = Instantiate(nome, Pos, Quaternion.identity);
-        new_sala.name = "sala." + aux;
+        for(int i = 0; i< new_sala.transform.childCount; i++)
+        {
+            if (new_sala.transform.GetChild(i).name == "sala")
+            {
+                new_sala.transform.GetChild(i).name = "sala." + instanceNumber;
+            }
+        }
+        //Debug.Log(new_sala.transform.GetChild(0).name);
+        //string roomNumber = new_sala.name.Substring(new_sala.name.LastIndexOf('.') + 1);
+        //Debug.Log(new_sala);
+    }
+
+    private void SpawnPuzzle(GameObject nomePuzzle, Vector3 Pos)
+    {
+        GameObject newPuzzle = Instantiate(nomePuzzle, Pos, Quaternion.identity);
+        newPuzzle.name = nomePuzzle.name + "." + instanceNumber;
+        //string puzzleNumber = newPuzzle.name.Substring(newPuzzle.name.LastIndexOf('.') + 1);
+        //Debug.Log(newPuzzle);
     }
 
     private void Pressed()

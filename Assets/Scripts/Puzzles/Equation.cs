@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using System.Linq;
 
 public class Equation : MonoBehaviour
 {
@@ -26,11 +28,20 @@ public class Equation : MonoBehaviour
     public GameObject handLight4;
     public GameObject handLight5;
     DoorOpener doorOpener;
+    private string puzzleNumber;
 
     // Start is called before the first frame update
     void Start()
     {
-        doorOpener = GameObject.FindGameObjectWithTag("tagDoorOpener").GetComponent<DoorOpener>();
+        puzzleNumber = string.Concat(gameObject.name.Where(char.IsDigit));
+        try
+        {
+            doorOpener = GameObject.Find("sala." + puzzleNumber).GetComponent<DoorOpener>();
+        }
+        catch
+        {
+            doorOpener = GameObject.Find("sala").GetComponent<DoorOpener>();
+        }        
     }
 
     // Update is called once per frame
