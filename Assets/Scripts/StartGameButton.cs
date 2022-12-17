@@ -70,11 +70,20 @@ public class StartGameButton : MonoBehaviour
     private void SpawnRoom(GameObject nome, Vector3 Pos)
     {
         GameObject new_sala = Instantiate(nome, Pos, Quaternion.identity);
-        for(int i = 0; i< new_sala.transform.childCount; i++)
+        int doorNumber = 0;
+        for (int i = 0; i< new_sala.transform.childCount; i++)
         {
             if (new_sala.transform.GetChild(i).name == "sala")
             {
                 new_sala.transform.GetChild(i).name = "sala." + instanceNumber;
+                for (int j = 0; j < new_sala.transform.GetChild(i).childCount; j++)
+                {
+                    if (new_sala.transform.GetChild(i).GetChild(j).name == "door")
+                    {
+                        doorNumber++;
+                        new_sala.transform.GetChild(i).GetChild(j).name = new_sala.transform.GetChild(i).GetChild(j).name + "." + instanceNumber + "." + doorNumber;
+                    }                    
+                }                
             }
         }
         //Debug.Log(new_sala.transform.GetChild(0).name);

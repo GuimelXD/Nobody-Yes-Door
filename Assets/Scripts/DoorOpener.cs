@@ -35,10 +35,10 @@ public class DoorOpener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (openOnLoad)
-        {
-            openDoors();
-        }
+        //if (openOnLoad)
+        //{
+        //    openDoors();
+        //}
     }
 
     // Update is called once per frame
@@ -47,59 +47,59 @@ public class DoorOpener : MonoBehaviour
         
     }
 
-    public void openDoors()
-    {
-        if (!doorOpen1)
-        {
-            openDoor1();
-        }
-        if (!doorOpen2)
-        {
-            openDoor2();
-        }
-        if (!doorOpen3)
-        {
-            openDoor3();
-        }
-        if (!doorOpen4)
-        {
-            openDoor4();
-        }
-    }
+    //public void openDoors()
+    //{
+    //    if (!doorOpen1)
+    //    {
+    //        openDoor1();
+    //    }
+    //    if (!doorOpen2)
+    //    {
+    //        openDoor2();
+    //    }
+    //    if (!doorOpen3)
+    //    {
+    //        openDoor3();
+    //    }
+    //    if (!doorOpen4)
+    //    {
+    //        openDoor4();
+    //    }
+    //}
 
-    void openDoor1()
-    {
-        panelBottom1.Play(panelBottom, 0, 0.0f);
-        panelL1.Play(panelL, 0, 0.0f);
-        panelR1.Play(panelR, 0, 0.0f);
-        panelTop1.Play(panelTop, 0, 0.0f);
-        doorOpen1 = true;
-    }
+    //void openDoor1()
+    //{
+    //    panelBottom1.Play(panelBottom, 0, 0.0f);
+    //    panelL1.Play(panelL, 0, 0.0f);
+    //    panelR1.Play(panelR, 0, 0.0f);
+    //    panelTop1.Play(panelTop, 0, 0.0f);
+    //    doorOpen1 = true;
+    //}
 
-    void openDoor2()
-    {
-        panelBottom2.Play(panelBottom, 0, 0.0f);
-        panelL2.Play(panelL, 0, 0.0f);
-        panelR2.Play(panelR, 0, 0.0f);
-        panelTop2.Play(panelTop, 0, 0.0f);
-        doorOpen2 = true;
-    }
+    //void openDoor2()
+    //{
+    //    panelBottom2.Play(panelBottom, 0, 0.0f);
+    //    panelL2.Play(panelL, 0, 0.0f);
+    //    panelR2.Play(panelR, 0, 0.0f);
+    //    panelTop2.Play(panelTop, 0, 0.0f);
+    //    doorOpen2 = true;
+    //}
 
-    void openDoor3()
-    {
-        panelBottom3.Play(panelBottom, 0, 0.0f);
-        panelL3.Play(panelL, 0, 0.0f);
-        panelR3.Play(panelR, 0, 0.0f);
-        panelTop3.Play(panelTop, 0, 0.0f);
-        doorOpen3 = true;
-    }
+    //void openDoor3()
+    //{
+    //    panelBottom3.Play(panelBottom, 0, 0.0f);
+    //    panelL3.Play(panelL, 0, 0.0f);
+    //    panelR3.Play(panelR, 0, 0.0f);
+    //    panelTop3.Play(panelTop, 0, 0.0f);
+    //    doorOpen3 = true;
+    //}
 
-    void openDoor4()
-    {
-        panelBottom4.Play(panelBottom, 0, 0.0f);
-        panelL4.Play(panelL, 0, 0.0f);
-        panelR4.Play(panelR, 0, 0.0f);
-        panelTop4.Play(panelTop, 0, 0.0f);
-        doorOpen4 = true;
-    }
+    //void openDoor4()
+    //{
+    //    panelBottom4.Play(panelBottom, 0, 0.0f);
+    //    panelL4.Play(panelL, 0, 0.0f);
+    //    panelR4.Play(panelR, 0, 0.0f);
+    //    panelTop4.Play(panelTop, 0, 0.0f);
+    //    doorOpen4 = true;
+    //}
 }
