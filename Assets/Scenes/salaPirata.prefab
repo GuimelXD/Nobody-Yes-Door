@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1115115174810916267}
   m_Layer: 0
   m_Name: salaPirata
-  m_TagString: Untagged
+  m_TagString: room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

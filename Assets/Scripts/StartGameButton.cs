@@ -7,14 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class StartGameButton : MonoBehaviour
 {
-    [SerializeField] private float threshold = 0.1f;
-    [SerializeField] private float deadZone = 0.025f;
-    [SerializeField] private string scene = null;
-
+    private float threshold = 0.1f;
+    private float deadZone = 0.025f;
+    public GameObject[] sceneNameList;
     private bool _isPressed;
     private Vector3 _startPos;
+    private Vector3 Pos;
     private ConfigurableJoint _joint;
-    private Vector3 newPlayerPos;
+    private int RandomOption;
+    private int aux = 1;
 
     public UnityEvent onPressed, onReleased;
 
@@ -23,7 +24,6 @@ public class StartGameButton : MonoBehaviour
     {
         _startPos = transform.localPosition;
         _joint = GetComponent<ConfigurableJoint>();
-        //newPlayerPos.Set(-15, 6, -15);
     }
 
     // Update is called once per frame
@@ -45,17 +45,34 @@ public class StartGameButton : MonoBehaviour
         return Mathf.Clamp(value,-1f,1f);
     }
 
-    private void LoadIt(string scene)
+    public void LoadIt()
     {
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
-        GameObject.Find("Player").transform.position = newPlayerPos;
+        Destroy(GameObject.Find("sala"));
+        Destroy(GameObject.Find("Point Light"));
+        for (int z = 0; z >= -40; z -= 10)
+        {
+            for (int x = 0; x >= -40; x -= 10)
+            {
+                Pos.Set(x, 0, z);
+                RandomOption = UnityEngine.Random.Range(0, sceneNameList.Length);
+                SpawnRoom(sceneNameList[RandomOption], Pos);
+
+                aux++;
+            }
+        }
+        Destroy(GameObject.Find("Menu"));
+    }
+
+    private void SpawnRoom(GameObject nome, Vector3 Pos)
+    {
+        GameObject new_sala = Instantiate(nome, Pos, Quaternion.identity);
+        new_sala.name = "sala." + aux;
     }
 
     private void Pressed()
     {
         _isPressed = true;
         onPressed.Invoke();
-        LoadIt(scene);
         Debug.Log("Pressed");
     }
 
