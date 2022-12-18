@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Linq;
+using System;
 
 public class Equation : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Equation : MonoBehaviour
     public int points = 0; 
     public float maxTime;
     private float timeRemaining;
-    public bool timerIsRunning;
+    private bool timerIsRunning;
     public Text TimerText;
     public Text EquationText;
     public Material materialOff;
@@ -27,32 +28,17 @@ public class Equation : MonoBehaviour
     public GameObject handLight3;
     public GameObject handLight4;
     public GameObject handLight5;
-    private GameObject doorName;
-    DoorOpener doorOpener;
-    Door door1;
-    Door door2;
-    Door door3;
-    Door door4;
-    private string puzzleNumber;
+
+    private string stringPuzzleNumber;
+    int puzzleNumber;
+    RoomManager roomManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        puzzleNumber = string.Concat(gameObject.name.Where(char.IsDigit));
-        try
-        {
-            //doorOpener = GameObject.Find("sala." + puzzleNumber).GetComponent<DoorOpener>();
-            //doorName = GameObject.Find("sala." + puzzleNumber).transform.GetChild(1).gameObject;
-            door1 = GameObject.Find("door." + puzzleNumber + ".1").GetComponent<Door>();
-            door2 = GameObject.Find("door." + puzzleNumber + ".2").GetComponent<Door>();
-            door3 = GameObject.Find("door." + puzzleNumber + ".3").GetComponent<Door>();
-            door4 = GameObject.Find("door." + puzzleNumber + ".4").GetComponent<Door>();
-        }
-        catch
-        {
-            doorOpener = GameObject.Find("sala").GetComponent<DoorOpener>();
-        }
-
+        stringPuzzleNumber = string.Concat(gameObject.name.Where(char.IsDigit));
+        puzzleNumber = int.Parse(stringPuzzleNumber);
+        roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
     }
 
     // Update is called once per frame
@@ -103,10 +89,7 @@ public class Equation : MonoBehaviour
                 handLight5.GetComponent<MeshRenderer>().material = materialOn;
                 timerIsRunning = false;
                 finished = true;
-                door1.openDoor();
-                door2.openDoor();
-                door3.openDoor();
-                door4.openDoor();
+                roomManager.openDoors(stringPuzzleNumber, puzzleNumber);
                 break;
         }
     }
@@ -127,9 +110,9 @@ public class Equation : MonoBehaviour
 
     public void CreateEquation()
     {
-        num1 = Random.Range(0, 10); 
-        op = Random.Range(0, 2);
-        num2 = Random.Range(0, 10);
+        num1 = UnityEngine.Random.Range(0, 10); 
+        op = UnityEngine.Random.Range(0, 2);
+        num2 = UnityEngine.Random.Range(0, 10);
         switch (op)
         {
             case 0:
@@ -143,8 +126,8 @@ public class Equation : MonoBehaviour
                     }
                     else
                     {
-                        num1 = Random.Range(0, 9);
-                        num2 = Random.Range(0, 9);
+                        num1 = UnityEngine.Random.Range(0, 9);
+                        num2 = UnityEngine.Random.Range(0, 9);
                     }
                 }
                 valid = false;
@@ -160,8 +143,8 @@ public class Equation : MonoBehaviour
                     }
                     else
                     {
-                        num1 = Random.Range(0, 9);
-                        num2 = Random.Range(0, 9);
+                        num1 = UnityEngine.Random.Range(0, 9);
+                        num2 = UnityEngine.Random.Range(0, 9);
                     }
                 }
                 valid = false;

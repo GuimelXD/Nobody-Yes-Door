@@ -28,10 +28,13 @@ public class Door : MonoBehaviour
 
     public void openDoor()
     {
-        panelBottom.Play(panelBottomName, 0, 0.0f);
-        panelL.Play(panelLName, 0, 0.0f);
-        panelR.Play(panelRName, 0, 0.0f);
-        panelTop.Play(panelTopName, 0, 0.0f);
-        doorOpen = true;
+        if (!doorOpen)
+        {
+            panelBottom.Play(panelBottomName, 0, 0.0f);
+            panelL.Play(panelLName, 0, 0.0f);
+            panelR.Play(panelRName, 0, 0.0f);
+            panelTop.Play(panelTopName, 0, 0.0f);
+            doorOpen = true;
+        }
     }
 }
