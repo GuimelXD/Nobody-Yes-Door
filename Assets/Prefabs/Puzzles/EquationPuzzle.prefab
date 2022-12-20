@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  maxTime: 20
+  maxTime: 10
   TimerText: {fileID: 6997295059752549667}
   EquationText: {fileID: 6997295060936807426}
   materialOff: {fileID: 2100000, guid: 46896d4a01f21ac48a814a433329ffbb, type: 2}

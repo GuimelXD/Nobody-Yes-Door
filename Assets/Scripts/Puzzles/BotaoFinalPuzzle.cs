@@ -13,6 +13,8 @@ public class BotaoFinalPuzzle : MonoBehaviour
     public float maxButtonTime;
     private float buttonTime;
     int lastAnchor;
+    public AudioSource audioSource;
+    public AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
@@ -54,11 +56,14 @@ public class BotaoFinalPuzzle : MonoBehaviour
             lastAnchor = anchorIndex;
             GameObject pilar = GameObject.Find("Pilar");
             Destroy(pilar);
+            GameObject arrows = GameObject.Find("ArrowsPuzzle");
+            Destroy(arrows);
         }
         else
         {
             roomManager.EndGame();
             Debug.Log("cabou");
+            audioSource.PlayOneShot(clip);
         }
     }
 }

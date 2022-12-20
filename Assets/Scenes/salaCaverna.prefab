@@ -496,6 +496,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquareBoxTall
       objectReference: {fileID: 0}
+    - target: {fileID: 8786909822154928614, guid: 6efa0528f5387d648a5ee8166701a903,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 8786909822154928614, guid: 6efa0528f5387d648a5ee8166701a903,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8786909822154928614, guid: 6efa0528f5387d648a5ee8166701a903,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.27
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6efa0528f5387d648a5ee8166701a903, type: 3}
 --- !u!4 &912660384465787002 stripped

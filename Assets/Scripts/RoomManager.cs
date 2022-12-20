@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
 {
     Vector3 Pos;
     GameObject player;
+    GameObject salaInicial;
     private int roomIndexNumber;
     private int puzzleIndexNumber;
     private int val;
@@ -14,12 +15,13 @@ public class RoomManager : MonoBehaviour
     private int instanceNumber = 1;
     public RoomsPuzzlesManager roomsPuzzlesManager;
     int roomNumber;
-    bool keycardPuzzleUsed = false;
     bool botaoFinalUsed = false;
     public bool loadOnStart = false;
     public GameObject botaoFinal;
     public Text finishTimeText;
     public GameObject ConcluidoPanel;
+    public AudioSource audioSource;
+    public AudioClip clip;
 
     private float gameTime;
     private bool gameTimerIsRunning = false;
@@ -28,6 +30,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        salaInicial = GameObject.Find("sala");
         if (loadOnStart)
         {
             LoadMap();
@@ -46,8 +49,7 @@ public class RoomManager : MonoBehaviour
     public void LoadMap()
     {
         Destroy(GameObject.Find("Menu"));
-        player.transform.position = new Vector3(0, .26f, 0);
-        player.transform.rotation = Quaternion.Euler(0, 90, 0);
+        player.transform.position = new Vector3(0, .26f, 3.675f);
         for (int z = 0; z >= -40; z -= 10)
         {
             for (int x = 0; x >= -40; x -= 10)
@@ -188,12 +190,12 @@ public class RoomManager : MonoBehaviour
         door2.openDoor();
         door3.openDoor();
         door4.openDoor();
+        audioSource.PlayOneShot(clip);
     }
 
     public void EndGame()
     {
-        player.transform.position = new Vector3(0, -4.55f, 0);
-        player.transform.rotation = Quaternion.Euler(0,90,0);
+        player.transform.position = new Vector3(0, -7.31f, 0);
         System.TimeSpan formattedTime = System.TimeSpan.FromSeconds(gameTime);
         Debug.Log(formattedTime.ToString("hh':'mm':'ss"));
         finishTimeText.text = formattedTime.ToString("hh':'mm':'ss");
